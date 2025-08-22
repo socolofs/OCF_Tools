@@ -1,0 +1,9 @@
+interfaces = []
+exclude =[
+	"**/*__pycache__",
+	"**/*egg-info",
+	"build*",
+]
+source_roots = [
+	".",
+]

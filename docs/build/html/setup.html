@@ -1,0 +1,605 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>OCF_Tools Installation Guide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/scipy.css?v=6dd54bfa" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=01f34227"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'setup';</script>
+    <link rel="icon" href="_static/tamoc_favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Release Notes" href="release.html" />
+    <link rel="prev" title="get_inflow_hydrograph" href="reference/generated/ocf_tools.storage_routing.get_inflow_hydrograph.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/ocf_tools_logo.png" class="logo__image only-light" alt=" - Home"/>
+    <img src="_static/ocf_tools_logo.png" class="logo__image only-dark pst-js-only" alt=" - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorial/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="reference/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Installing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="release.html">
+    Release notes
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorial/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="reference/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Installing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="release.html">
+    Release notes
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav">
+    
+  </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">OCF_Tools Installation Guide</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="ocf-tools-installation-guide">
+<h1><a class="toc-backref" href="#id2" role="doc-backlink">OCF_Tools Installation Guide</a><a class="headerlink" href="#ocf-tools-installation-guide" title="Link to this heading">#</a></h1>
+<nav class="contents" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ocf-tools-installation-guide" id="id2">OCF_Tools Installation Guide</a></p>
+<ul>
+<li><p><a class="reference internal" href="#requirements" id="id3">Requirements</a></p></li>
+<li><p><a class="reference internal" href="#install-instructions" id="id4">Install Instructions</a></p>
+<ul>
+<li><p><a class="reference internal" href="#installing-conda" id="id5">Installing Conda</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-python-environment" id="id6">Creating a Python Environment</a></p></li>
+<li><p><a class="reference internal" href="#installing-ocf-tools" id="id7">Installing OCF_Tools</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#documentation" id="id8">Documentation</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<p>OCF_Tools is a Python package for making typical calculations in open-channel hydraulics and engineering.  This is a pure-python package that should install easily on Mac OS, Windows, or Linux given the correct dependencies.  This page describes the steps to install the OCF_Tools package in a virtual Python environment that contains the required Python version and dependences.</p>
+<section id="requirements">
+<span id="id1"></span><h2><a class="toc-backref" href="#id3" role="doc-backlink">Requirements</a><a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
+<p>The OCF_Tools package requires the following Python packages.  These should be installed from the <cite>conda_forge</cite> channel repository.  For instructions on installing these packages using the provided <cite>environment.yml</cite> file, see <span class="xref std std-ref">Creating a Python Environment virtual-env</span>, below.</p>
+<p>The current Python dependencies and a brief description of their purpose or use is as follows:</p>
+<ul class="simple">
+<li><p>python 3.11 or higher.  Older version of Python are not compatible with the
+new install methods that use <cite>pyproject.toml</cite> and the present implementation
+using Meson through <cite>meson.build</cite>.</p></li>
+<li><p>meson 1.5.0 or higher.  Handles package installation.</p></li>
+<li><p>meson-python 0.15.0 or higher.  Handles package installation.</p></li>
+<li><p>ninja.  Allows for editable installs.</p></li>
+<li><p>pkg-config.  Part of the package installation requirements.</p></li>
+<li><p>pytest.  Needed to run package tests.</p></li>
+<li><p>numpy 1.25.2 or higher.  Allows for matrix and array operations.</p></li>
+<li><p>scipy 1.13.0 or higher.  Allows for numerical solutions to diverse problems,
+including root-finding to find critical and normal depths in
+non-rectangualar channels and solving differential equations to obtain
+backwater curves.</p></li>
+<li><p>matplotlib.  Needed for plotting.</p></li>
+<li><p>pandas.  Used to open Excel files.</p></li>
+<li><p>openpyxl.  Used with <cite>pandas</cite> to open Excel files.</p></li>
+</ul>
+<p>To create a convenient development environment, the following options packages are also recommended:</p>
+<ul class="simple">
+<li><p>ipython.  Provides a command-line interface to Python.</p></li>
+<li><p>spyder.  This is a full-featured integrated development environment (IDE).</p></li>
+<li><p>jupyterlab.  This is a modern interface that allows enhanced text
+documentation together with Python code excerpts</p></li>
+</ul>
+</section>
+<section id="install-instructions">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Install Instructions</a><a class="headerlink" href="#install-instructions" title="Link to this heading">#</a></h2>
+<p>Because this is a simple Python package, the following installation instructions should work on Mac OS, Windows, and Linux.</p>
+<section id="installing-conda">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Installing Conda</a><a class="headerlink" href="#installing-conda" title="Link to this heading">#</a></h3>
+<p>The easiest way to install Python, the above dependencies, and this package is
+to use Conda to manage package installation. A lightweight package manager
+that is linked to <span class="xref std std-ref">conda-forge https://conda-forge.org</span> is Miniforge. You
+can download and install Miniforge from the <span class="xref std std-ref">Miniforge Release
+https://conda-forge.org/miniforge/</span> page. Choose a stable release for your
+computer’s operating system and architecture. To be on the safe side, reboot
+your machine after installation.</p>
+<p>To use Miniforge, you need to open a terminal window:</p>
+<ul class="simple">
+<li><p><strong>Windows.</strong> On Windows, go to the <cite>Start</cite> menu and search for the Miniforge Prompt.  This should open a terminal window.</p></li>
+<li><p><strong>Mac OS.</strong> On Mac OS, you can open the native terminal app, which is found in the <cite>Applications/utilities</cite> directory.  You may also optionally install <span class="xref std std-ref">iTerm2 https://iterm2.com</span>, a more full-featured terminal for Mac OS.</p></li>
+<li><p><strong>Linux.</strong> Like Mac OS, the terminal is a native application on Linux machines.  It is full-featured and should work as described below.</p></li>
+</ul>
+<p>Once you open an appropriate terminal window, you should see a command prompt with the text <code class="docutils literal notranslate"><span class="pre">(base)</span></code> included.  This means that the window has opened in the base conda environment.  If this term is not displayed, your terminal may not have found the Miniforge installation.  Test your installation with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">config</span> <span class="o">--</span><span class="n">show</span> <span class="n">channels</span>
+</pre></div>
+</div>
+<p>If <cite>conda</cite> is installed, this should list your current channels.  If not, you need to find the appropriate terminal window that is linked to Miniforge.  See the steps above to try to debug your situation.</p>
+<p>Once the <cite>conda</cite> command is working, if <cite>conda-forge</cite> is listed first, then you are all set to continue.  If not, make <cite>conda-forge</cite> the default channel using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">config</span> <span class="o">--</span><span class="n">add</span> <span class="n">channels</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+</pre></div>
+</div>
+<p>Recheck your channels with the <code class="docutils literal notranslate"><span class="pre">--show</span> <span class="pre">channels</span></code> command.  Everything should be set up correctly now.</p>
+<p>We will avoid installing anything in the <code class="docutils literal notranslate"><span class="pre">(base)</span></code> conda environment.  Instead, we will use a virtual environment, as described in the next section.</p>
+</section>
+<section id="creating-a-python-environment">
+<span id="virtual-env"></span><h3><a class="toc-backref" href="#id6" role="doc-backlink">Creating a Python Environment</a><a class="headerlink" href="#creating-a-python-environment" title="Link to this heading">#</a></h3>
+<p>OCF_Tools is distributed with an <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file that will auto-install of the required and optional packages listed in the <span class="xref std std-ref">Requirements requirements</span> section.  To do this, navigate in your terminal window to the base directory of OCF_Tools, where the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file is located.  From that position, use the conda command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="o">&lt;</span><span class="n">my</span><span class="o">-</span><span class="n">env</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">f</span> <span class="n">environment</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">&lt;my-env&gt;</span></code> is a name you want to assign to your new virtual environment.  The default is <code class="docutils literal notranslate"><span class="pre">ocf_tools</span></code>, but any name will work.  Follow the on-screem prompts.  After everything has installed, activate the environment using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="o">&lt;</span><span class="n">my</span><span class="o">-</span><span class="n">env</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>This should change the prompt so that the text <code class="docutils literal notranslate"><span class="pre">(base)</span></code> is replaced with <code class="docutils literal notranslate"><span class="pre">(&lt;my-env&gt;)</span></code>.  You will need to execute this command every time you want to use OCF_Tools since we will install the package in this virtual environment.</p>
+<p>If you have several existing virtual environments on your machine and you are using the Spyder IDE, you will need to make sure Spyder is using this virtual environment.  You can open the <code class="docutils literal notranslate"><span class="pre">Spyder</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Python</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Preferences</span></code> panel, select <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">interpreter</span></code> and select the radio button to <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">the</span> <span class="pre">following</span> <span class="pre">Python</span> <span class="pre">interpreter</span></code>.  Make sure this points to your virtual environment created above.</p>
+</section>
+<section id="installing-ocf-tools">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Installing OCF_Tools</a><a class="headerlink" href="#installing-ocf-tools" title="Link to this heading">#</a></h3>
+<p>If you want to install this package one time and not make changes to the source code, you can use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>I recommend you instead install an editable version so that you can include your own changes and enhancements to the package.  To do this, you should use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">isolation</span> <span class="o">--</span><span class="n">config</span><span class="o">-</span><span class="n">settings</span><span class="o">=</span><span class="n">builddir</span><span class="o">=&lt;</span><span class="n">mydir</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">editable</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">&lt;mydir&gt;&gt;</span></code> is the name of a directory where you would like Meson to build this package.  You may use something like <code class="docutils literal notranslate"><span class="pre">build</span></code> or <code class="docutils literal notranslate"><span class="pre">build-laptop</span></code>.
+To check whether everything is installed properly, run the tests.  First, change directory to the <code class="docutils literal notranslate"><span class="pre">./test</span></code> directory included with the OCF Tools package.  Then run the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="o">-</span><span class="n">v</span>
+</pre></div>
+</div>
+<p>This should launch all of the tests included with the package.</p>
+</section>
+</section>
+<section id="documentation">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Documentation</a><a class="headerlink" href="#documentation" title="Link to this heading">#</a></h2>
+<p>To learn how to use OCF_Tools, you should work through the <span class="xref std std-ref">Tutorials ./tutorial/index</span>.  To see the documentation for each method and function included in the OCF_Tools package, visit the <span class="xref std std-ref">API Reference ./reference/index</span>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="reference/generated/ocf_tools.storage_routing.get_inflow_hydrograph.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">get_inflow_hydrograph</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="release.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Release Notes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-instructions">Install Instructions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-conda">Installing Conda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-python-environment">Creating a Python Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-ocf-tools">Installing OCF_Tools</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/setup.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Scott A. Socolofsky.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

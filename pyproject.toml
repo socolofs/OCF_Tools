@@ -1,0 +1,81 @@
+# This file is used by pip to install the ocf_tools package
+# 
+# To install an editable version, use:
+# 
+#    pip install --no-build-isolattion --editable .
+# 
+# For a standard, non-editable installation, use:
+# 
+#    pip install .
+# 
+# 
+# Author
+# ------
+# S. Socolofsky, June 2025, Texas A&M University, <socolofs@tamu.edu>
+
+# Define the build system requirements
+[build-system]
+build-backend = "mesonpy"
+requires = [
+    "meson>=1.5.0",           
+    "meson-python>=0.15.0",
+    "ninja",                  # Required for editable installs
+    "numpy>=0.14.0",    
+]
+
+# Project metadata
+[project]
+name = "ocf_tools"
+version = "0.1.0"
+license = { file = "LICENSE.txt" }
+description = "Computational Tools for Open Channel Hydraulics"
+authors = [
+    {name = "Scott A. Socolofsky", email = "socolofs@tamu.edu"}
+]
+maintainers = [
+    { name = "Scott A. Socolofsky", email="socolofs@tamu.edu" },
+]
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.25.2",
+    "scipy>=1.13.0",
+    "matplotlib>=3.6.2",
+    "pandas>=1.5.2",
+    "pytest>=7.1.2",
+    "openpyxl>=3.0.10"  
+]
+readme = "README.rst"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Engineering",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python 3",
+    "Programming Language :: Python 3.11",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Scientific/Engineering",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+]
+doc = [   # Copied from Scipy
+    "sphinx>=5.0.0,<8.2.0",
+    "intersphinx_registry",
+    "pydata-sphinx-theme>=0.15.2",
+    "sphinx-copybutton",
+    "sphinx-design>=0.4.0",
+    "matplotlib>=3.5",
+    "numpydoc",
+    "jupytext",
+    "myst-nb>=1.2.0",
+    "pooch",
+    "jupyterlite-sphinx>=0.19.1",
+    "jupyterlite-pyodide-kernel",
+    "linkify-it-py"
+]

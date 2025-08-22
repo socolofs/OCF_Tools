@@ -1,0 +1,2 @@
+V0.1.0, June 16, 2025 --
+   Original release with installation tools using Meson

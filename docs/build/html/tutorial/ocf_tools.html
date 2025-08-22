@@ -1,0 +1,710 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Open Channel Tools (ocf_tools.ocf_tools)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/scipy.css?v=6dd54bfa" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial/ocf_tools';</script>
+    <link rel="icon" href="../_static/tamoc_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Culvert Tools (culvert_tools.culvert_tools)" href="culvert_tools.html" />
+    <link rel="prev" title="OCF_Tools User Guide" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ocf_tools_logo.png" class="logo__image only-light" alt=" - Home"/>
+    <img src="../_static/ocf_tools_logo.png" class="logo__image only-dark pst-js-only" alt=" - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../setup.html">
+    Installing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../release.html">
+    Release notes
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../setup.html">
+    Installing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../release.html">
+    Release notes
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav">
+    <p aria-level="2" class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Open Channel Tools (<code class="xref py py-mod docutils literal notranslate"><span class="pre">ocf_tools.ocf_tools</span></code>)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="culvert_tools.html">Culvert Tools (<code class="xref py py-mod docutils literal notranslate"><span class="pre">culvert_tools.culvert_tools</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="storage_routing.html">Storage Routing (<code class="xref py py-mod docutils literal notranslate"><span class="pre">ocf_tools.storage_routing</span></code>)</a></li>
+</ul>
+
+  </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">OCF_Tools User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Open Channel Tools (<code class="xref py py-mod docutils literal notranslate"><span class="pre">ocf_tools.ocf_tools</span></code>)</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="open-channel-tools-ocf-tools-ocf-tools">
+<h1><a class="toc-backref" href="#id4" role="doc-backlink">Open Channel Tools (<code class="xref py py-mod docutils literal notranslate"><span class="pre">ocf_tools.ocf_tools</span></code>)</a><a class="headerlink" href="#open-channel-tools-ocf-tools-ocf-tools" title="Link to this heading">#</a></h1>
+<nav class="contents" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#open-channel-tools-ocf-tools-ocf-tools" id="id4">Open Channel Tools (<code class="xref py py-mod docutils literal notranslate"><span class="pre">ocf_tools.ocf_tools</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#using-the-ocf-tools-module" id="id5">Using the <code class="docutils literal notranslate"><span class="pre">ocf_tools</span></code> Module</a></p>
+<ul>
+<li><p><a class="reference internal" href="#creating-a-cross-section-object" id="id6">Creating a Cross-Section Object</a></p></li>
+<li><p><a class="reference internal" href="#using-the-openchannel-class" id="id7">Using the <code class="docutils literal notranslate"><span class="pre">OpenChannel</span></code> Class</a></p></li>
+<li><p><a class="reference internal" href="#computing-gradually-varied-flow-profiles" id="id8">Computing Gradually Varied Flow Profiles</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#using-the-weir-tools-module" id="id9">Using the <code class="docutils literal notranslate"><span class="pre">weir_tools</span></code> Module</a></p>
+<ul>
+<li><p><a class="reference internal" href="#sharp-crested-weirs" id="id10">Sharp-crested Weirs</a></p></li>
+<li><p><a class="reference internal" href="#broad-crested-weirs" id="id11">Broad-crested Weirs</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#references" id="id12">References</a></p></li>
+</ul>
+</nav>
+<p>The OCF Tools package includes modules to perform several different types of
+analysis associated with open channel hydraulics:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">ocf_tools</span></code> module is the main module for defining channel cross
+sections and computing water depths.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">culvert_tools</span></code> module is an experimental module for computing
+controls and water levels in culverts.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">weir_tools</span></code> module provides functions for standard weir equations to
+compute flow rate from head over the weir.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">storage_routing</span></code> module allows for computing the storage equation
+and outflow from detention basins.</p></li>
+</ul>
+<p>The following sections document the main steps involved in using each of
+these modules. At the present time, only the <code class="docutils literal notranslate"><span class="pre">ocf_tools</span></code> and <code class="docutils literal notranslate"><span class="pre">weir_tools</span></code>
+modules are included. You may read the source code for the other modules or
+check back later when more of the documentation is complete.</p>
+</section>
+<section id="using-the-ocf-tools-module">
+<span id="tutorial-ocf"></span><h1><a class="toc-backref" href="#id5" role="doc-backlink">Using the <code class="docutils literal notranslate"><span class="pre">ocf_tools</span></code> Module</a><a class="headerlink" href="#using-the-ocf-tools-module" title="Link to this heading">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">ocf_tools</span></code> module includes two main classes for handling open channel
+hydraulics calculations: cross-section classes and an <code class="docutils literal notranslate"><span class="pre">OpenChannel</span></code> class.
+Calculations usually involve creating a cross-section object, passing that
+object to the <code class="docutils literal notranslate"><span class="pre">OpenChannel</span></code> class, and then using the various object
+methods to make standard calculations. The following example is for a
+trapezoidal cross-section, which uses the <code class="docutils literal notranslate"><span class="pre">TrapSection</span></code> class. Other
+section types have there own classes, with the input data required to create
+those objects described in the ref:<cite>API Reference ./reference/index</cite>.</p>
+<section id="creating-a-cross-section-object">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Creating a Cross-Section Object</a><a class="headerlink" href="#creating-a-cross-section-object" title="Link to this heading">#</a></h2>
+<p>We will create a trapezoidal section with side slopes of 3 units horizontal
+to 1 unit vertical, a bottom width of 15 m, Manning’s <em>n</em> value of 0.015 in
+the main channel, and an optional different Manning’s <em>n</em> value ov 0.025 for
+the side slopes. The unit system should be specified as <cite>0</cite> for U.S.
+Customary Units or <cite>1</cite> for SI units:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ocf_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">ocf_tools</span>
+<span class="n">trap_sec</span> <span class="o">=</span> <span class="n">ocf_tools</span><span class="o">.</span><span class="n">TrapSection</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">15.</span> <span class="mf">0.015</span><span class="p">,</span> <span class="n">ns</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can use this new <cite>trap_sec</cite> object to do most calculations that depend on
+a known water depth and discharge. Consider a case of a flow of 2.5 cubic
+meters per second and water depth of 1.2 m. Then, we can compute several
+relevant quantities as follows.</p>
+<p>To compute the flow velocity and Froude number:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="mf">1.2</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="mf">2.5</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">trap_sec</span><span class="o">.</span><span class="n">velocity</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
+<span class="n">Fr</span> <span class="o">=</span> <span class="n">trap_sec</span><span class="o">.</span><span class="n">froude_number</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Notice that we do not need to enter the unit system or any of the channel
+geometry with these calculations. Those data are stored in the object itself.
+We can also calculate the specific energy and momentum function as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">E</span> <span class="o">=</span> <span class="n">trap_sec</span><span class="o">.</span><span class="n">specific_energy</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">trap_sec</span><span class="o">.</span><span class="n">momentum_function</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We could also directly compute the flow cross-sectional area or centroid
+depth with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">trap_sec</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">y_centroid</span> <span class="o">=</span> <span class="n">trap_sec</span><span class="o">.</span><span class="n">centroid_depth</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or, the wetted perimeter and top width as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">trap_sec</span><span class="o">.</span><span class="n">wetted_perimeter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">trap_sec</span><span class="o">.</span><span class="n">top_width</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can find documentation for all available <code class="docutils literal notranslate"><span class="pre">Section</span></code> methods in the
+ref:<cite>API Reference ./reference/index</cite></p>
+</section>
+<section id="using-the-openchannel-class">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Using the <code class="docutils literal notranslate"><span class="pre">OpenChannel</span></code> Class</a><a class="headerlink" href="#using-the-openchannel-class" title="Link to this heading">#</a></h2>
+<p>Often times in open channel hydraulics problems, we know the discharge, but not the water depth.  In those cases, there normally needs to be some kind of iteration, either to solve the implicit Manning’s equation, or to find a water depth that matches a given specific energy or momentum function.  These calculations, along with computation of backwater profiles, are handled by the <code class="docutils literal notranslate"><span class="pre">OpenChannel</span></code> class.</p>
+<p>We can create an <code class="docutils literal notranslate"><span class="pre">OpenChannel</span></code> object by passing a <code class="docutils literal notranslate"><span class="pre">Section</span></code> object as input.  Note that this will tell the <code class="docutils literal notranslate"><span class="pre">OpenChannel</span></code> object what unit system you are using, so do not try to change unit systems.</p>
+<p>We will start by creating a <cite>canal</cite> object using our trapezoidal section created above:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">canal</span> <span class="o">=</span> <span class="n">ocf_tools</span><span class="o">.</span><span class="n">OpenChannel</span><span class="p">(</span><span class="n">trap_sec</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can pass any <code class="docutils literal notranslate"><span class="pre">Section</span></code> object as input; this module assumes the channel is prismatic, with the same cross-section geometry along the whole length of the channel.</p>
+<p>We can find the critical depth, which involves interating to set the Froude number to 1.  We pass the discharge and an initial guess for the critical depth.  The method returns the correct value:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yc</span> <span class="o">=</span> <span class="n">canal</span><span class="o">.</span><span class="n">critical_depth</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can check the result, by calling the Froude number method of the cross-section object:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fr</span> <span class="o">=</span> <span class="n">trap_sec</span><span class="o">.</span><span class="n">Froude_number</span><span class="p">(</span><span class="n">yc</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can also compute the normal depth given the discharge.  Unlike for the critical depth, we now need to include the channel slope.  The calculations are as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="mf">0.0005</span>
+<span class="n">yn</span> <span class="o">=</span> <span class="n">canal</span><span class="o">.</span><span class="n">normal_depth</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, <cite>S</cite> is the channel slope and <cite>1.0</cite> is an initial guess for the normal depth.  If either of these methods (critical depth or normal depth) return the initial guess as the answer, the most likely outcome is that the iteration search did not find a solution.  Always check the output from these functions to ensure the results are the correct answers.  We can check the normal depth by computing the discharge by Manning’s equation and comparing it to the given discharge:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Qn</span> <span class="o">=</span> <span class="n">canal</span><span class="o">.</span><span class="n">manning_flow</span><span class="p">(</span><span class="n">yn</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If the calculation found the correct normal depth <cite>yn</cite>, then the normal flow <cite>Qn</cite> should match our design discharge <cite>Q</cite>.</p>
+<p>In the case of a hydraulic jump, the momentum function remains constant through the jump.  The sequent depth is the depth on the other side of the hydraulic jump.  Because the Froude number goes through 1.0 in the jump, the <cite>sequent_depth</cite> method is able to compute either upstream or downstream sequent depths by first interrogating the Froude number of the given input depth.  For example, if we had a hydraulic jump in this channel with a downstream depth of 2.3 m, the upstream sequent depth of the super-critical inflow would be computed as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="o">=</span> <span class="n">canal</span><span class="o">.</span><span class="n">sequent_depth</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These are the main methods that compute local channel properties.</p>
+</section>
+<section id="computing-gradually-varied-flow-profiles">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Computing Gradually Varied Flow Profiles</a><a class="headerlink" href="#computing-gradually-varied-flow-profiles" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">OpenChannel</span></code> objects can also compute gradually-varied flow profiles.  Several methods are involved in the calculation:</p>
+<ul class="simple">
+<li><p>The <cite>profile</cite> method is normally called first to compute a gradually varied flow profile.  This stores the numerical table of data for use by subsequent methods.</p></li>
+<li><p>The <cite>plot_profile</cite> method will plot the currently stored gradually varied flow profile.</p></li>
+<li><p>To see the computed values, you may use the <cite>get_profile_table</cite> method to obtain a string header describing the data and a Numpy array of corresponding computed values.</p></li>
+<li><p>You may save the computed values directly to a space-delimited file, using the <cite>save_profile_table</cite> method.</p></li>
+<li><p>The <cite>profile_type</cite> method is used by the <cite>profile</cite> method to decide what type of profile to plot.  This method is not usually called directly by the user.</p></li>
+</ul>
+<p>We can compute an example as follows.  Let us assume the flow in our trapezoidal channel is sub-critical, with a downstream control that sets the water depth to 3.3 m.  We will compute the water depths at locations upstream of this downstream control.  To do that, we need to specify the following values:</p>
+<ul class="simple">
+<li><p><cite>x0</cite>:  The numerical value for the x-coordinate at the downstream control.  This could be zero or a known survey station value.</p></li>
+<li><p><cite>y0</cite>:  The water depth at the control, here 3.3 m.</p></li>
+<li><p><cite>Q</cite>:  The design discharge, here 2.5 cubic meters per second.</p></li>
+<li><p><cite>S</cite>:  The channel slope, assumed constant throughout the profile.  Here, we will use 0.0005</p></li>
+<li><p><cite>control_section</cite>:  a flag indicating where the control is located.  Use <cite>1</cite> for a downstream control or <cite>0</cite> for an upstream control.  Be sure to use upstream control on any steep slope.</p></li>
+<li><p><cite>delta_x</cite>:  This is the maximum step size the solver will be allowed to take between computed values along the profile.  The solver is an adaptive step-size solver, so it may take smaller steps when needed.  Use this to produce smooth output when plotting the profile.</p></li>
+<li><p><cite>max_x</cite>:  Use this optional parameter to specify how far away from the control the profile should be computed.  If set to <cite>None</cite>, the solver will solve until the profile is within 0.1 percent of normal depth.</p></li>
+</ul>
+<p>The return values from the <cite>profile</cite> method are the <em>x</em> and <em>y</em> coordinates of each point along the profile water surface elevation.</p>
+<p>We can solve for the profile in our canal and plot the result as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x0</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="mf">3.3</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">canal</span><span class="o">.</span><span class="n">profile</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">control_section</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">delta_x</span><span class="o">=</span><span class="mf">100.</span><span class="p">)</span>
+<span class="n">canal</span><span class="o">.</span><span class="n">plot_profile</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Canal Profile&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can save the results of the profile calculation using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;canal_profile.txt&#39;</span>
+<span class="n">canal</span><span class="o">.</span><span class="n">save_profile_table</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These are the main steps in using <cite>ocf_tools</cite> to compute flow profiles.</p>
+</section>
+</section>
+<section id="using-the-weir-tools-module">
+<h1><a class="toc-backref" href="#id9" role="doc-backlink">Using the <code class="docutils literal notranslate"><span class="pre">weir_tools</span></code> Module</a><a class="headerlink" href="#using-the-weir-tools-module" title="Link to this heading">#</a></h1>
+<p>The weir-tools module contains two functions:  one for sharp-crested weirs and the other for broad-crested weirs.  These functions take a minimized array of inputs (e.g., height on the weir, weir height, and unit system) and return the discharge over the weir.</p>
+<section id="sharp-crested-weirs">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Sharp-crested Weirs</a><a class="headerlink" href="#sharp-crested-weirs" title="Link to this heading">#</a></h2>
+<p>The sharp-crested weir function computes equation (2.39) from Sturm <a class="reference internal" href="../_references.html#sturm" id="id1"><span>[Sturm]</span></a> with updated values for the <em>C_d</em> coefficient based on the paper by <a class="reference internal" href="../_references.html#pugh" id="id2"><span>[Pugh]</span></a>.  The input parameters are:</p>
+<ul class="simple">
+<li><p><cite>H</cite>: The height of the water above the weir crest.</p></li>
+<li><p><cite>P</cite>: The height of the weir, from the channel bottom to the weir crest.</p></li>
+<li><p><cite>L</cite>: The length of the weir.  This function only considers supressed weirs, so this length should always match the channel top width.</p></li>
+<li><p><cite>units</cite>:  A flag indicating the unit system:  use <cite>0</cite> for U.S. Customary Units or <cite>1</cite> for SI units.</p></li>
+</ul>
+<p>We can compute an example as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ocf_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">weir_tools</span>
+<span class="n">H</span> <span class="o">=</span> <span class="mf">1.2</span>     <span class="c1"># head on weir in feet</span>
+<span class="n">P</span> <span class="o">=</span> <span class="mf">6.</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mf">18.</span>
+<span class="n">units</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">weir_tools</span><span class="o">.</span><span class="n">sharp_crested_weir</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">units</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="broad-crested-weirs">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Broad-crested Weirs</a><a class="headerlink" href="#broad-crested-weirs" title="Link to this heading">#</a></h2>
+<p>This function computes equation (2.47) in <a class="reference internal" href="../_references.html#sturm" id="id3"><span>[Sturm]</span></a> for a broad-crested weir.  This function only implements <em>C_d</em> = 0.848, which is the truly broad-crested weir case.  The function checks to make sure the broad-crested weir criteria are met and returns an error message when one of the dimensions is wrong.  The input parameters are:</p>
+<ul class="simple">
+<li><p><cite>H</cite>: The height of the water above the weir crest.</p></li>
+<li><p><cite>P</cite>: The height of the weir, from the channel bottom to the weir crest.</p></li>
+<li><p><cite>L</cite>: The length of the weir.  This function only considers supressed weirs, so this length should always match the channel top width.</p></li>
+<li><p><cite>l</cite>: The length of the weir in the flow direction.</p></li>
+<li><p><cite>units</cite>:  A flag indicating the unit system:  use <cite>0</cite> for U.S. Customary Units or <cite>1</cite> for SI units.</p></li>
+</ul>
+<p>We can compute the same example as above, just changing to a broad-crested weir, as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="mf">10.</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">weir_tools</span><span class="o">.</span><span class="n">broad_crested_weir</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">units</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that the broad-crested weir function does iterate to find the correct value of the energy loss coefficient <em>C_v</em>.</p>
+</section>
+</section>
+<section id="references">
+<h1><a class="toc-backref" href="#id12" role="doc-backlink">References</a><a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">OCF_Tools User Guide</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="culvert_tools.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Culvert Tools (<code class="xref py py-mod docutils literal notranslate"><span class="pre">culvert_tools.culvert_tools</span></code>)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Open Channel Tools (<code class="xref py py-mod docutils literal notranslate"><span class="pre">ocf_tools.ocf_tools</span></code>)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-ocf-tools-module">Using the <code class="docutils literal notranslate"><span class="pre">ocf_tools</span></code> Module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-cross-section-object">Creating a Cross-Section Object</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-openchannel-class">Using the <code class="docutils literal notranslate"><span class="pre">OpenChannel</span></code> Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-gradually-varied-flow-profiles">Computing Gradually Varied Flow Profiles</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-weir-tools-module">Using the <code class="docutils literal notranslate"><span class="pre">weir_tools</span></code> Module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharp-crested-weirs">Sharp-crested Weirs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broad-crested-weirs">Broad-crested Weirs</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tutorial/ocf_tools.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Scott A. Socolofsky.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
