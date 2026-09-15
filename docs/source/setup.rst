@@ -96,7 +96,7 @@ Creating a Python Environment
 
 OCF_Tools is distributed with an ``environment.yml`` file that will auto-install of the required and optional packages listed in the :ref:`Requirements requirements` section.  To do this, navigate in your terminal window to the base directory of OCF_Tools, where the ``environment.yml`` file is located.  From that position, use the conda command::
 
-   conda create -n <my-env> -f environment.yml
+   conda env create -n <my-env> -f environment.yml
 
 where ``<my-env>`` is a name you want to assign to your new virtual environment.  The default is ``ocf_tools``, but any name will work.  Follow the on-screem prompts.  After everything has installed, activate the environment using::
 

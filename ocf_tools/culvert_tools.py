@@ -61,8 +61,8 @@ def culvert_flow(hw, tw, culvert, S, K, M, c, Y, Ke, L, report=True):
     d = culvert.section.d
     
     # Check for a steep or mild full-barrel flow
-    Q0 = culvert.manning_flow(0.9 * d, S)
-    y0 = 0.9 * d
+    Q0 = culvert.manning_flow(0.94 * d, S)
+    y0 = 0.90 * 0.94 * d
     yc = culvert.critical_depth(Q0, y0)
     
     if report:
@@ -82,7 +82,7 @@ def culvert_flow(hw, tw, culvert, S, K, M, c, Y, Ke, L, report=True):
             print('    --> Mild')
     
     # Compute maximum flow at the normal depth
-    Qn = culvert.manning_flow(0.93333333 * d, S)
+    Qn = culvert.manning_flow(0.94 * d, S)
     
     if report:
         print('    --> Maximum full flow, cfs = %g' % Qn)
@@ -103,13 +103,13 @@ def culvert_flow(hw, tw, culvert, S, K, M, c, Y, Ke, L, report=True):
     
     # Compute the critical and normal depths at this flow rate
     if hw < d:
-        yc = culvert.critical_depth(Q, hw)
+        yc = culvert.critical_depth(Q, 0.1 * d)
     else:
-        yc = culvert.critical_depth(Q, 0.9 * d)
+        yc = culvert.critical_depth(Q, 0.7 * d)
     
     if Q <= Qn:
         if hw < d:
-            yn = culvert.normal_depth(Q, S, yc)
+            yn = culvert.normal_depth(Q, S, 0.95 * yc)
         else:
             yn = culvert.normal_depth(Q, S, 0.9 * d)
     else:
@@ -241,7 +241,7 @@ def Q_ic_2(hw, culvert, S, K, M):
         A0 = culvert.section.area(d)
     else:
         A0 = culvert.section.area(hw)
-    Q0 = 1.0 * A0 * np.sqrt(culvert.g * hw)
+    Q0 = 1.0 * A0 * np.sqrt(culvert.g * hw) 
     Q = fsolve(residual, Q0)[0]
     
     return Q
