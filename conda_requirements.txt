@@ -1,0 +1,30 @@
+# Please refer to README.rst
+# To use:
+#   $ conda env create -f environment.yml  # `mamba` works too for this command
+#   $ conda activate ocf_tools
+#
+python>="3.11"
+meson>="1.5.0"
+meson-python>="0.15.0"
+ninja
+numpy
+pkg-config
+
+# For running tests
+pytest
+
+# For compatability with numerical tools
+numpy>="1.25.2"
+scipy>="1.13.0"
+matplotlib
+
+# For opening and using Excel files
+pandas
+openpyxl
+
+# Convenience tools for a usable Python development environment
+ipython
+
+# Optional, full-service development environments
+spyder 
+jupyterlab
