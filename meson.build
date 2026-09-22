@@ -7,6 +7,7 @@
 
 project(
     'ocf_tools',
+    'c',
     version: '0.1.0',   # Keep up-to-date with pyproject.toml
     license: 'MIT',
     meson_version: '>= 1.5.0',
