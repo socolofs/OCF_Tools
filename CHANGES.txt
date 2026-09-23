@@ -1,2 +1,4 @@
 V0.1.0, June 16, 2025 --
    Original release with installation tools using Meson
+V1.0.0, September 22, 2026 --
+   Updated to simple setuptools installation

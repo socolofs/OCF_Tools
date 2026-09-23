@@ -89,8 +89,7 @@ package where this README.rst file is stored::
    
 If you prefer to install an editable version of the package, use::
 
-   >>> pip install --no-build-isolation --config-settings=builddir=<mydir>
-       --editable .
+   >>> pip install --editable .
        
 where `<mydir>` is the name of the local directory where you want Meson to install some of the source code.  If you will use `ocf_tools` on more than
 one computer synchonized to the same cloud directory, set a different `<mydir>` on each computer.  Otherwise, this parameter can be ignored.

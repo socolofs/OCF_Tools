@@ -6,9 +6,6 @@
 
 # Installation
 python>=3.12,<3.14
-meson>=1.5.0
-meson-python>=0.20,<1
-pkg-config
 pip
 
 # Numerical packages
