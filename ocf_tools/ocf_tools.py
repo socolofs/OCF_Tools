@@ -286,8 +286,8 @@ class Section(object):
         
         Returns
         -------
-        E : float
-            Specific energy following equation (2.16), L
+        M : float
+            Momentum function following equation (3.3), L^3
         
         """
         #  Get the area and depth of the centroid
@@ -1096,6 +1096,117 @@ class OpenChannel(object):
         
         return Qn
 
+    def reservoir_outflow(self, H, S, k):
+        """
+        Determine the discharge from a reservoir to a channel
+        
+        Determine the discharge from a reservoir to a channel with a total
+        head of `H` above the channel invert and assuming a slope of `S`
+        directly downstream of the reservoir.
+        
+        Parameters
+        ----------
+        H : float
+            Total head in the reservoir above the channel invert, L
+        S : float
+            Slope of the channel downstream of the reservoir, --
+        k : float
+            Channel entrance loss coefficient, --
+        
+        Returns 
+        -------
+        yn : float
+            The normal depth at the reservoir outflow, L
+        Q : float
+            The discharge from the reservoir to the channel, L^3/T
+        
+        """
+        # First, we assume a steep channel with yc at the reservoir exit
+        def yc_residual(y):
+            """
+            Residual of the critical outflow situation.  Setting Fr = 1, we
+            have:
+            
+                Dc / 2 = Q^2 / (2 g Ac^2)
+            
+            This the residual of the energy equation is:
+            
+                H - yc - (1 + k) Dc / 2
+            
+            """
+            # Compute yc
+            B = self.section.top_width(y)
+            A = self.section.area(y)
+            Dc = A / B
+            
+            # Return
+            return H - y - (1. + k) * Dc / 2.
+            
+        # Find the critical outflow depth
+        from scipy.optimize import fsolve
+        yc = fsolve(yc_residual, H)[0]
+        if yc == H:
+            # We did not find a good solution, try again
+            yc = fsolve(yc_residual, 0.05 * H)[0]
+    
+        # Compute the corresponding critical discharge
+        B = self.section.top_width(yc)
+        A = self.section.area(yc)
+        D = A / B
+        Q = np.sqrt(self.g * A**2 * D)
+        
+        # Compute the normal depth for this channel slope
+        yn = self.normal_depth(Q, S, H)
+        if yn == H:
+            # We did not find a root, try looking again
+            yn = self.normal_depth(Q, S, 0.9 * yc)
+            
+        # Check if the channel is steep
+        if yn <= yc:
+            # This channel is steep or critical; hence, this is the solution
+            return (yn, Q)
+        
+        else:
+            # The channel is mild for this discharge; solve the reservoir
+            # outflow problem on a mild slope
+            def yn_residual(y):
+                """
+                Residual of the normal outflow condition.  Using Manning's
+                equation:
+                
+                    Q n /(kn sqrt(S)) = AR^(2/3)
+                
+                Then, the residual of the energy equation is:
+                
+                    H - yn - (1 + k) kn / (2 g n^2) R^(4/3) S
+                
+                """
+                # Compute the hydraulic radius and effective Manning's n
+                R = self.section.hydraulic_radius(y)
+                n = self.section.ne(y)
+                
+                # Return the residual
+                res = (H - y - (1. + k) * self.Kn**2 / (2. * self.g * n**2) *
+                    R**(4./3.) * S)
+                return res
+                
+            # Find the normal outflow depth
+            from scipy.optimize import fsolve
+            yn = fsolve(yn_residual, H)[0]
+            R = self.section.hydraulic_radius(yn)
+            A = self.section.area(yn)
+            
+            if yn == H:
+                # We did not find a root, try looking again
+                yn = fsolve(yn_residual, 0.05 * H)[0]
+            
+            # Compute the normal flow at this depth
+            Q = self.manning_flow(yn, S)
+            
+            # Return these values
+            return (yn, Q)
+            
+    
     def profile_type(self, y0, Q, S, control_section=1):
         """
         Determine the profile type (M1, M2, S1, etc) for the given conditions
@@ -1303,7 +1414,7 @@ class OpenChannel(object):
         ycp = zp + self.yc
         
         # Open a figure
-        plt.figure(fig, figsize=(9,5))
+        f = plt.figure(fig, figsize=(9,5))
         if clearfig:
             plt.clf()
         
@@ -1319,6 +1430,8 @@ class OpenChannel(object):
         plt.title(title_text)
         plt.draw()
         plt.show()
+        
+        return f
         
     def get_profile_table(self):
         """

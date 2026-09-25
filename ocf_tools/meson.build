@@ -7,7 +7,8 @@ python_sources = [
     'culvert_tools.py',
     'ocf_tools.py',
     'storage_routing.py',
-    'weir_tools.py'
+    'weir_tools.py',
+	'efm_tools.py'
 ]
 
 test_sources = [
