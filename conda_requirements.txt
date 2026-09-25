@@ -1,0 +1,28 @@
+# Please refer to README.rst
+# To use:
+#   $ conda env create -n <env_name> --file conda_requirements.txt 
+#   $ conda activate <env_name>
+#
+
+# Installation
+python>=3.12,<3.14
+pip
+
+# Numerical packages
+numpy>=2.0,<2.3.2
+scipy
+matplotlib
+
+# For opening and using Excel files
+pandas
+openpyxl
+
+# Convenience tools for a usable Python development environment
+ipython
+
+# Optional, full-service development environments
+spyder 
+jupyterlab
+
+# For running tests
+pytest

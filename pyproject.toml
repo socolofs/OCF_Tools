@@ -2,7 +2,7 @@
 # 
 # To install an editable version, use:
 # 
-#    pip install --no-build-isolattion --editable .
+#    pip install --editable .
 # 
 # For a standard, non-editable installation, use:
 # 
@@ -11,22 +11,17 @@
 # 
 # Author
 # ------
-# S. Socolofsky, June 2025, Texas A&M University, <socolofs@tamu.edu>
+# S. Socolofsky, June 2026, Texas A&M University, <socolofs@tamu.edu>
 
 # Define the build system requirements
 [build-system]
-build-backend = "mesonpy"
-requires = [
-    "meson>=1.5.0",           
-    "meson-python>=0.15.0",
-    "ninja",                  # Required for editable installs
-    "numpy>=0.14.0",    
-]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
 
 # Project metadata
 [project]
 name = "ocf_tools"
-version = "0.1.0"
+version = "1.0.0"
 license = { file = "LICENSE.txt" }
 description = "Computational Tools for Open Channel Hydraulics"
 authors = [
@@ -60,6 +55,12 @@ classifiers = [
     "Operating System :: MacOS",
 ]
 
+# Package discovery
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ocf_tools*"]
+
+# If running the tests or building the documentation
 [project.optional-dependencies]
 test = [
     "pytest",
