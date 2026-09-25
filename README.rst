@@ -70,7 +70,7 @@ Quick Start
 
 This is a very simple Python package that should install directly.  From a miniconda command prompt at the root directory of the package where this file is stored, create a conda environment for use with this package::
 
-   >>> conda env create -n <env_name> -f environment.yml
+   >>> conda env create -n <env_name> --file conda_requirements.txt
 
 where `-n <env_name>` is optional and `<env_name>` is the name you want to 
 assign to this virtual Python environment.  Once you create the environment, 
